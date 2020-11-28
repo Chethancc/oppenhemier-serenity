@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="To login as Clerk and verify user able to add working hero record" skipped="0" tests="2" time="2.64" timestamp="2020-11-28 02:35:39"><testcase name="To add single record of working hero"/><testcase name="To add multiple record of working heros"/></testsuite>
