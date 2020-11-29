@@ -17,36 +17,36 @@ import org.junit.Assert;
 import static net.serenitybdd.rest.SerenityRest.objectMapper;
 import static net.serenitybdd.rest.SerenityRest.rest;
 import static constants.Constant.*;
-public class BookeeperSpec extends PageObject {
+public class BookeeperSpec {
     List<BookerResponse> responseData;
 
-    public void rakeDataBase(){
+    public void rakeDataBase() {
         rest()
                 .contentType(ContentType.JSON)
-                .post(baseUrl+"/calculator/rakeDatabase")
+                .post(baseUrl + rakeDBUrl)
                 .then().log().all(true)
                 .statusCode(200).extract().response();
     }
 
-    public void insertRandomDataToDBViaAPI(int dataToBeInserted){
+    public void insertRandomDataToDBViaAPI(int dataToBeInserted) {
         rest()
                 .contentType(ContentType.JSON)
-                .post(baseUrl+"/calculator/insertRandomToDatabaseForNoReason?count="+dataToBeInserted)
+                .post(baseUrl + insertDBURL + dataToBeInserted)
                 .then().log().all(true)
                 .statusCode(200)
                 .extract().response();
     }
 
-    public List<BookerResponse> getDetailsOfInsertedData(){
+    public List<BookerResponse> getDetailsOfInsertedData() {
         ObjectMapper objectMapper = new ObjectMapper();
         String response = rest()
                 .contentType(ContentType.JSON)
-                .get(baseUrl+"/calculator/taxRelief")
+                .get(baseUrl + dbDetailURL)
                 .then().log().all()
                 .statusCode(200).extract().asString();
-        try{
-             responseData = Arrays.asList(objectMapper.readValue(response,BookerResponse[].class));
-        }catch (JsonProcessingException js){
+        try {
+            responseData = Arrays.asList(objectMapper.readValue(response, BookerResponse[].class));
+        } catch (JsonProcessingException js) {
             js.printStackTrace();
         }
 
@@ -60,24 +60,35 @@ public class BookeeperSpec extends PageObject {
                 if (reliefAmount <= 50) {
                     System.out.println("Name of user whose relief is less than 50 is " + bookerResponse.getName());
 
-                } else {
-                    Assert.assertTrue("No Data is rewceived", false);
                 }
             }
+        } else {
+            Assert.assertTrue("No Data is received", false);
         }
     }
 
-    public void verifyUserWithGreaterThanFifty(){
+        public void verifyUserWithGreaterThanFifty () {
+            if (!responseData.isEmpty()) {
+                for (BookerResponse bookerResponse : responseData) {
+                    int reliefAmount = (int) Float.parseFloat(bookerResponse.getRelief());
+                    if (reliefAmount > 50) {
+                        System.out.println("Name of user whose relief is less than 50 is " + bookerResponse.getName());
+                    }
+                }
+            } else {
+                Assert.assertTrue("No Data is rewceived", false);
+            }
+        }
+
+        public void verifyOnlyTwoDecimalPlacesArePresent(){
         if(!responseData.isEmpty()){
-            for(BookerResponse bookerResponse : responseData){
-                int reliefAmount = (int)Float.parseFloat(bookerResponse.getRelief());
-                if(reliefAmount > 50){
-                    System.out.println("Name of user whose relief is less than 50 is "+bookerResponse.getName());
-
+            for(BookerResponse bookerResponse : responseData) {
+                String [] stringSplit = bookerResponse.getRelief().split("\\.");
+                if (stringSplit[1].length()>2){
+                    Assert.assertTrue("Decimal places are greater than 2 values",false  );
                 }
             }
-        }else{
-            Assert.assertTrue("No Data is rewceived",false);
+        }
         }
     }
-}
+

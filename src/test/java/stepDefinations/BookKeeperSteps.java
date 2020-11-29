@@ -37,5 +37,10 @@ public class BookKeeperSteps {
         spec.verifyUserWithGreaterThanFifty();
     }
 
+    @Then("response should contain tax relief amount with only {int} decimal places")
+    public void response_should_contain_tax_relief_amount_with_only_decimal_places(Integer int1) {
+        spec.verifyOnlyTwoDecimalPlacesArePresent();
+    }
+
 
 }

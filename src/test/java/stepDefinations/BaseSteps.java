@@ -1,5 +1,6 @@
 package stepDefinations;
 
+import fileReaders.PropertiesReader;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import net.serenitybdd.screenplay.actors.Cast;
@@ -14,9 +15,8 @@ public class BaseSteps {
     @Before()
     public void initialStepUp(){
         OnStage.setTheStage(new Cast());
-        //PropertiesReader reader = new PropertiesReader();
-        //getDriver().get(System.getProperty("baseUrl"));
-        System.out.println("entered before method");
+        PropertiesReader reader = new PropertiesReader();
+
     }
 
     @Given("I login as a clerk")

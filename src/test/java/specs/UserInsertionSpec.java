@@ -7,7 +7,7 @@ import sun.jvm.hotspot.debugger.Page;
 
 import static net.serenitybdd.rest.SerenityRest.rest;
 import static constants.Constant.*;
-public class UserInsertionSpec extends PageObject {
+public class UserInsertionSpec {
 
     public void insertNewUser(UserRequest request) {
         rest()

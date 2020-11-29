@@ -1,26 +1,31 @@
-Feature: To login as Clerk and verify user able to add working hero record
+Feature: To login as Bookeeper and check if able to fetch the records of
 
-#  to create a single user , here we are checking for response of 202 where data is inserted and a Message accepted is sent
-  Scenario: To add single record of working hero and verify the application
-    Given I login as a clerk
-    And add the details of the working hero
-    Then details must be successfully updated
+# Data extracted from the url is compared with data in the DB
 
+  Scenario: To verify all the users who has tax relief <50
+    Given I login as a Bookeeper
+    And Rake the database via API
+    And Insert data to DB via API
+    And get the users with tax releif
+    Then proper users must be present for tax releif <50
 
+# Data extracted from the url is compared with data in the DB
 
-  Scenario: To add multiple record of working heros and verify
-    Given I login as a clerk
-    And add insert multiple working heros with profile
-      |Profile1|
-      |Profile2|
-      |Profile3|
-      |Profile4|
-      |Profile5|
-    Then details must be successufully updated in DB
-
-
-  Scenario: To upload data file of working heros through API and verify
-    Given I login as a clerk
-    And insert multiple records of users via API
-    Then details must be successufully updated in DB
-
+  Scenario: To verify all the users who has tax relief >50
+    Given I login as a Bookeeper
+    And Rake the database via API
+    And Insert data to DB via API
+    And get the users with tax releif
+    Then proper user data for tax relief >50 must be present
+#
+#
+  Scenario: To verify all the tax relief response contains values with decimal point of 2
+    Given I login as a Bookeeper
+    And Rake the database via API
+    And Insert data to DB via API
+    And get the users with tax releif
+    Then response should contain tax relief amount with only 2 decimal places
+#
+##    THis is a UI test to check wheather contents are displayed to the governer
+#  Scenario : To verify when logged in as governer
+#
