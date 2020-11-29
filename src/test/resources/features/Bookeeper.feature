@@ -25,7 +25,10 @@ Feature: To login as Bookeeper and check if able to fetch the records of
     And Insert data to DB via API
     And get the users with tax releif
     Then response should contain tax relief amount with only 2 decimal places
-#
-##    THis is a UI test to check wheather contents are displayed to the governer
-#  Scenario : To verify when logged in as governer
-#
+
+#    This is a UI test to get the details of the working hero and dispense the amount
+  Scenario: To login as governer and verify to dispense cash
+    Given I login as a Governer
+    And able to see the tax relief details
+    Then should be able to dipense the amount
+

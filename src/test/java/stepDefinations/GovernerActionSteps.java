@@ -13,7 +13,8 @@ public class GovernerActionSteps extends PageObject {
 
     @Given("I login as a Governer")
     public void i_login_as_a_governer() {
-        open(Constant.baseUrl);
+        waitABit(2000);
+        getDriver().get(Constant.baseUrl);
     }
 
     @Given("able to see the tax relief details")
@@ -27,6 +28,7 @@ public class GovernerActionSteps extends PageObject {
             clickOn(getDriver().findElement(By.xpath("//a[text()='Dispense Now']")));
             Assert.assertTrue("Cash Might not be dispensed please check",getDriver().findElement(By.xpath("//div[text()='Cash dispensed']")).isDisplayed());
             waitABit(2000);
+            getDriver().close();
         }
 
     }
