@@ -2,6 +2,7 @@ package fixtures;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import constants.Constant;
 import constants.ContextKey;
 import fileReaders.CsvReader;
 import model.request.UserRequest;
@@ -13,9 +14,7 @@ import java.util.Map;
 import static constants.ContextKey.*;
 
 public class MultiUserData {
-    static String currentDirectory = System.getProperty("user.dir");
-    ;
-    public static String filePath = currentDirectory + "/src/main/resources/testData.csv";
+
 
     public static String getMultipleUserData(List<String> Profilelist) {
         List<UserRequest> userRequestData = new ArrayList<>();
@@ -24,7 +23,7 @@ public class MultiUserData {
         for (String profile : Profilelist) {
             Map<String, String> userProfile = new HashMap<>();
             UserRequest userRequest = new UserRequest();
-            userProfile = CsvReader.getData(filePath, profile);
+            userProfile = CsvReader.getData(Constant.testFileData, profile);
             userRequest.setBirthday(userProfile.get(ContextKey.birthday.toString()));
             userRequest.setGender(userProfile.get(ContextKey.gender.toString()));
             userRequest.setNatid(userProfile.get(ContextKey.natid.toString()));
