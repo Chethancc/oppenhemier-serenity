@@ -1,8 +1,7 @@
 Feature: To login as Bookeeper and check if able to fetch the records of
 
-
 # Data to be compared with calculation of inserted data and received tax relief data
-  Scenario: To verify if calculated tax relief is > O and <=50 then final tax relief should be 50.00
+  Scenario: To verify if calculated tax relief is > 0 and <=50 then final tax relief should be 50.00
     Given I login as a Bookeeper
     And Rake the database via API
     And Insert data to DB via API
