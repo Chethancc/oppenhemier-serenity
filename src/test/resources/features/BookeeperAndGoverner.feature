@@ -45,7 +45,6 @@ Feature: To login as Bookeeper and check if able to fetch the records of
     And get the users with tax releif
     Then variable amount should be 1 for user with age <=18
 
-
   Scenario: To verify Variable amount of 0.8 is used for tax relief calculation with age between >18 and <=35
     Given I login as a clerk
     And add insert multiple working heros with profile
@@ -150,10 +149,8 @@ Feature: To login as Bookeeper and check if able to fetch the records of
     And get the users with tax releif
     Then gender bonus of "0" should be added for "Male" candidates
 
-
 #    This is a UI test to get the details of the working hero and dispense the amount
   Scenario: To login as governer and verify the dispense to dispense cash
     Given I login as a Governer
     And able to see the tax relief details
     Then should be able to dipense the amount
-
