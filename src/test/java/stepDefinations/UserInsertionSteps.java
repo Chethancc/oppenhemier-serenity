@@ -21,7 +21,6 @@ UserInsertionSpec userInsertionSpec = new UserInsertionSpec();
     public void add_the_details_of_the_working_hero() {
         UserRequest userRequest = UserInsertionData.getDefaultData();
         userInsertionSpec.insertNewUser(userRequest);
-
     }
 
     @Then("details must be successfully updated")

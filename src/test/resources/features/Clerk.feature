@@ -16,6 +16,11 @@ Feature: To login as Clerk and verify user able to add working hero record
       |Profile3|
       |Profile4|
       |Profile5|
+      |Profile6|
+      |Profile7|
+      |Profile8|
+      |Profile9|
+      |Profile10|
     Then details must be successufully updated in DB
 
 

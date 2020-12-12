@@ -42,5 +42,21 @@ public class BookKeeperSteps {
         spec.verifyOnlyTwoDecimalPlacesArePresent();
     }
 
+    @Then("variable amount should be {int} for user with age <={int}")
+    public void variable_amount_should_be_for_user_with_age(Integer int1, Integer int2) {
+        System.out.println("This method is to verify the variable amount added with tax");
+        //this method is not implemented because request data is not stored
+    }
+
+    @Then("variable amount should be {string} for user with age greater than {string} and less than equal to {string}")
+    public void variable_amount_should_be_for_user_with_age_greater_than_and_less_than_equal_to(String string, String string2, String string3) {
+        System.out.println("This method is to verify the variable amount added with tax");
+        //this method is not implemented because request data is not stored
+    }
+
+    @Then("gender bonus of {string} should be added for {string} candidates")
+    public void gender_bonus_of_should_be_added_for_candidates(String string, String string2) {
+        System.out.println("This method is to verify the variable amount added with tax");
+    }
 
 }

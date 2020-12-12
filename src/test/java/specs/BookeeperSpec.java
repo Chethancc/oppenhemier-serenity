@@ -49,7 +49,6 @@ public class BookeeperSpec {
         } catch (JsonProcessingException js) {
             js.printStackTrace();
         }
-
         return responseData;
     }
 

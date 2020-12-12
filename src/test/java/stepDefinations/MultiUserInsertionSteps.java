@@ -15,7 +15,6 @@ MultiUserInsertionSpec multiUserInsertionSpec = new MultiUserInsertionSpec();
              multiUserInsertionSpec.insertMulitpleData(MultiUserData.getMultipleUserData(myProfile));
     }
 
-
     @Then("details must be successufully updated in DB")
     public void details_must_be_successufully_updated_in_db() {
         System.out.println("Db details needed to verify if the data is added successfully");

@@ -34,6 +34,7 @@ public class MultiUserData {
         }
         try {
             allUserData = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(userRequestData);
+            System.out.println(allUserData);
         } catch (JsonProcessingException je) {
             je.printStackTrace();
         }
